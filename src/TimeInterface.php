@@ -1,6 +1,6 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
@@ -29,7 +29,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
     const THURSDAY = 4;
     const FRIDAY = 5;
     const SATURDAY = 6;
-    const DAYS = [
+    const WEEKDAYS = [
         self::SUNDAY    => 'Sunday',
         self::MONDAY    => 'Monday',
         self::TUESDAY   => 'Tuesday',

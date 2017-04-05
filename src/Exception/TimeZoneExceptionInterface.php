@@ -4,28 +4,25 @@
  *
  * PHP Version 7
  *
- * @package   Time
+ * @package   time
  * @license   https://opensource.org/licenses/MIT MIT License
  * @link      https://vainyl.com
  */
 declare(strict_types=1);
 
-namespace Vainyl\Time\Factory;
+namespace Vainyl\Time\Exception;
 
 use Vainyl\Time\TimeZoneInterface;
 
 /**
- * Interface TimeZoneFactoryInterface
+ * Interface TimeZoneExceptionInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface TimeZoneFactoryInterface
+interface TimeZoneExceptionInterface extends \Throwable
 {
     /**
-     * @param string             $fullName
-     * @param \DateTimeInterface $dateTime
-     *
      * @return TimeZoneInterface
      */
-    public function getTimeZone(string $fullName, \DateTimeInterface $dateTime): ?TimeZoneInterface;
+    public function getTimeZone() : TimeZoneInterface;
 }

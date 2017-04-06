@@ -48,13 +48,13 @@ class TimeZoneFactoryChain implements TimeZoneFactoryInterface
 
     /**
      * @param int                      $priority
-     * @param TimeZoneFactoryInterface $configSource
+     * @param TimeZoneFactoryInterface $timeZoneFactory
      *
      * @return TimeZoneFactoryChain
      */
-    public function addFactory(int $priority, TimeZoneFactoryInterface $configSource): TimeZoneFactoryChain
+    public function addFactory(int $priority, TimeZoneFactoryInterface $timeZoneFactory): TimeZoneFactoryChain
     {
-        $this->queue->push($configSource, $priority);
+        $this->queue->push($timeZoneFactory, $priority);
 
         return $this->configure();
     }

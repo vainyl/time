@@ -14,6 +14,7 @@ namespace Vainyl\Time\Chain;
 
 use Ds\PriorityQueue;
 use Ds\Vector;
+use Vainyl\Core\Id\AbstractIdentifiable;
 use Vainyl\Time\Exception\UnknownTimeZoneException;
 use Vainyl\Time\Factory\TimeZoneFactoryInterface;
 use Vainyl\Time\TimeZoneInterface;
@@ -23,7 +24,7 @@ use Vainyl\Time\TimeZoneInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class TimeZoneFactoryChain implements TimeZoneFactoryInterface
+class TimeZoneFactoryChain extends AbstractIdentifiable implements TimeZoneFactoryInterface
 {
     private $factories;
 
@@ -43,7 +44,7 @@ class TimeZoneFactoryChain implements TimeZoneFactoryInterface
      */
     public function getName(): string
     {
-        return 'time_zone';
+        return 'chain';
     }
 
     /**

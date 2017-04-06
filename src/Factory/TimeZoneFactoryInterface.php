@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Vainyl\Time\Factory;
 
+use Vainyl\Core\Name\NameableInterface;
 use Vainyl\Time\TimeZoneInterface;
 
 /**
@@ -19,7 +20,7 @@ use Vainyl\Time\TimeZoneInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface TimeZoneFactoryInterface
+interface TimeZoneFactoryInterface extends NameableInterface
 {
     /**
      * @param string             $fullName

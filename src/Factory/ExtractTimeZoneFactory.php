@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Vainyl\Time\Factory;
 
+use Vainyl\Core\Id\AbstractIdentifiable;
 use Vainyl\Time\TimeZone;
 use Vainyl\Time\TimeZoneInterface;
 
@@ -20,8 +21,16 @@ use Vainyl\Time\TimeZoneInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class ExtractTimeZoneFactory implements TimeZoneFactoryInterface
+class ExtractTimeZoneFactory extends AbstractIdentifiable implements TimeZoneFactoryInterface
 {
+    /**
+     * @inheritDoc
+     */
+    public function getName(): string
+    {
+        return 'extract';
+    }
+
     /**
      * @inheritDoc
      */

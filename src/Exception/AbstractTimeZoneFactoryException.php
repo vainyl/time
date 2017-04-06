@@ -56,6 +56,6 @@ abstract class AbstractTimeZoneFactoryException extends AbstractCoreException im
      */
     public function toArray(): array
     {
-        return array_merge(['time_zone_factory' => $this->timeZoneFactory], parent::toArray());
+        return array_merge(['time_zone_factory' => $this->timeZoneFactory->getName()], parent::toArray());
     }
 }

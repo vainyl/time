@@ -36,14 +36,11 @@ class TimeZoneFactoryCompilerPass extends AbstractCompilerPass
 
         $definition = $container->getDefinition('timezone.factory.chain');
         foreach ($container->findTaggedServiceIds('timezone.factory') as $id => $tags) {
-            foreach ($tags as $tag) {
-                if ('timezone.factory' !== $tag['name']) {
-                    continue;
+            foreach ($tags as $attributes) {
+                if (false === array_key_exists('priority', $attributes)) {
+                    throw new MissingRequiredFieldException($container, $id, $attributes, 'priority');
                 }
-                if (false === array_key_exists('priority', $tag)) {
-                    throw new MissingRequiredFieldException($container, $id, $tag, 'priority');
-                }
-                $definition->addMethodCall('addFactory', [$tag['priority'], new Definition($id)]);
+                $definition->addMethodCall('addFactory', [$attributes['priority'], new Definition($id)]);
             }
         }
     }

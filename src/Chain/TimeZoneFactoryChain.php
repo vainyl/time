@@ -43,7 +43,7 @@ class TimeZoneFactoryChain implements TimeZoneFactoryInterface
      */
     public function getName(): string
     {
-        return 'config';
+        return 'time_zone';
     }
 
     /**

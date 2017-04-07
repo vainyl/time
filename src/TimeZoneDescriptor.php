@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Vainyl\Time;
 
-use Vainyl\Core\Id\AbstractIdentifiable;
+use Vainyl\Core\AbstractIdentifiable;
 use Vainyl\Data\DescriptorInterface;
 
 /**

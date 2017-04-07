@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Vainyl\Time\Factory;
 
-use Vainyl\Core\Id\AbstractIdentifiable;
+use Vainyl\Core\AbstractIdentifiable;
 use Vainyl\Time\TimeZone;
 use Vainyl\Time\TimeZoneInterface;
 

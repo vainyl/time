@@ -14,7 +14,7 @@ namespace Vainyl\Time\Chain;
 
 use Ds\PriorityQueue;
 use Ds\Vector;
-use Vainyl\Core\Id\AbstractIdentifiable;
+use Vainyl\Core\AbstractIdentifiable;
 use Vainyl\Time\Exception\UnknownTimeZoneException;
 use Vainyl\Time\Factory\TimeZoneFactoryInterface;
 use Vainyl\Time\TimeZoneInterface;

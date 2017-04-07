@@ -12,7 +12,7 @@ declare(strict_types = 1);
 
 namespace Vainyl\Time;
 
-use Vainyl\Core\ArrayX\ArrayInterface;
+use Vainyl\Core\ArrayInterface;
 use Vainyl\Locale\LocaleInterface;
 
 /**
@@ -132,11 +132,11 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
     public function setTimeFromTimeString(string $time) : TimeInterface;
 
     /**
-     * @param TimeZoneInterface $value
+     * @param \DateTimeZone $value
      *
      * @return TimeInterface
      */
-    public function setTimezone($value);
+    public function setTimezone(\DateTimeZone $value);
 
     /**
      * @return int

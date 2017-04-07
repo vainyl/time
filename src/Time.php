@@ -267,7 +267,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
     /**
      * @inheritDoc
      */
-    public function setTimezone($timezone)
+    public function setTimezone(\DateTimeZone $timezone)
     {
         if (false === ($timezone instanceof TimeZone)) {
             throw new UnsupportedTimeZoneException($this, $timezone);

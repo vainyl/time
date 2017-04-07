@@ -15,6 +15,7 @@
     "require": {
         "php": ">=7.0",
         "vainyl/core": "0.1.x-dev",
+        "vainyl/data": "0.1.x-dev",
         "vainyl/locale": "0.1.x-dev"
     },
     "config": {

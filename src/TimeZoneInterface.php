@@ -12,7 +12,7 @@ declare(strict_types = 1);
 
 namespace Vainyl\Time;
 
-use Vainyl\Core\ArrayX\ArrayInterface;
+use Vainyl\Core\ArrayInterface;
 
 /**
  * Class TimeZoneInterface

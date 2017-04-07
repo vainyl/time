@@ -4,9 +4,9 @@
  *
  * PHP Version 7
  *
- * @package   vain-core
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-core
+ * @link      https://vainyl.com
  */
 declare(strict_types = 1);
 

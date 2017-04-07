@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT MIT License
  * @link      https://vainyl.com
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Vainyl\Time\Extension;
 
@@ -25,7 +25,7 @@ class TimeExtension extends AbstractExtension
     /**
      * @inheritDoc
      */
-    public function load(array $configs, ContainerBuilder $container) : AbstractExtension
+    public function load(array $configs, ContainerBuilder $container): AbstractExtension
     {
         $container->addCompilerPass(new TimeZoneFactoryCompilerPass());
 

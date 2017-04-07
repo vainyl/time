@@ -24,5 +24,5 @@ interface TimeZoneExceptionInterface extends \Throwable
     /**
      * @return TimeZoneInterface
      */
-    public function getTimeZone() : TimeZoneInterface;
+    public function getTimeZone(): TimeZoneInterface;
 }

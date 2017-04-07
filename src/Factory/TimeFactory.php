@@ -33,9 +33,9 @@ class TimeFactory implements TimeFactoryInterface
     /**
      * TimeFactory constructor.
      *
-     * @param \ArrayAccess $localeStorage
+     * @param \ArrayAccess             $localeStorage
      * @param TimeZoneFactoryInterface $timeZoneFactory
-     * @param string $defaultLocale
+     * @param string                   $defaultLocale
      */
     public function __construct(
         \ArrayAccess $localeStorage,

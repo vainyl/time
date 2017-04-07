@@ -24,5 +24,5 @@ interface TimeExceptionInterface extends \Throwable
     /**
      * @return TimeInterface
      */
-    public function getTime() : TimeInterface;
+    public function getTime(): TimeInterface;
 }

@@ -8,7 +8,7 @@
  * @license   https://opensource.org/licenses/MIT MIT License
  * @link      https://vainyl.com
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Vainyl\Time\Provider;
 
@@ -26,5 +26,5 @@ interface TimeProviderInterface
      *
      * @return TimeInterface
      */
-    public function getCurrentTime(string $timeZone) : TimeInterface;
+    public function getCurrentTime(string $timeZone): TimeInterface;
 }

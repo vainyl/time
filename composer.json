@@ -15,15 +15,13 @@
     "require": {
         "php": ">=7.0",
         "vainyl/core": "dev-master",
-        "vainyl/locale": "dev-master"
-    },
-    "config": {
-        "secure-http": false
+        "vainyl/locale": "dev-master",
+        "vainyl/data": "dev-master"
     },
     "repositories": [
         {
             "type": "composer",
-            "url": "http://78.47.118.217"
+            "url": "https://satis.vainyl.com:444"
         }
     ],
     "prefer-stable": true,

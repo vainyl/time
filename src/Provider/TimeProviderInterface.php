@@ -1,14 +1,14 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
- * @package   vain-time
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-time
+ * @link      https://vainyl.com
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Vainyl\Time\Provider;
 
@@ -26,5 +26,5 @@ interface TimeProviderInterface
      *
      * @return TimeInterface
      */
-    public function getCurrentTime(string $timeZone) : TimeInterface;
+    public function getCurrentTime(string $timeZone): TimeInterface;
 }

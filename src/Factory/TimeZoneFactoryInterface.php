@@ -1,31 +1,32 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
- * @package   vain-time
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-time
+ * @link      https://vainyl.com
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Vainyl\Time\Factory;
 
-use Vainyl\Time\TimeZone;
+use Vainyl\Core\NameableInterface;
+use Vainyl\Time\TimeZoneInterface;
 
 /**
  * Interface TimeZoneFactoryInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface TimeZoneFactoryInterface
+interface TimeZoneFactoryInterface extends NameableInterface
 {
     /**
      * @param string             $fullName
      * @param \DateTimeInterface $dateTime
      *
-     * @return TimeZone
+     * @return TimeZoneInterface
      */
-    public function getTimeZone(string $fullName, \DateTimeInterface $dateTime) : TimeZone;
+    public function getTimeZone(string $fullName, \DateTimeInterface $dateTime): ?TimeZoneInterface;
 }

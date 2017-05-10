@@ -1,14 +1,14 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
- * @package   vain-time
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-time
+ * @link      https://vainyl.com
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Vainyl\Time\Factory;
 
@@ -28,9 +28,5 @@ interface TimeFactoryInterface
      *
      * @return \Vainyl\Time\TimeInterface
      */
-    public function createFromString(
-        string $string,
-        string $timeZoneName = '',
-        string $locale = ''
-    ) : TimeInterface;
+    public function createFromString(string $string, string $timeZoneName = '', string $locale = ''): TimeInterface;
 }

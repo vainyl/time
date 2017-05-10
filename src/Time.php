@@ -1,12 +1,12 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
- * @package   vain-time
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-time
+ * @link      https://vainyl.com
  */
 declare(strict_types=1);
 
@@ -31,13 +31,17 @@ class Time extends \DateTimeImmutable implements TimeInterface
     /**
      * Time constructor.
      *
-     * @param string          $time
-     * @param LocaleInterface $locale
-     * @param TimeZone        $zone
-     * @param TimeInterface   $now
+     * @param string            $time
+     * @param LocaleInterface   $locale
+     * @param TimeZoneInterface $zone
+     * @param TimeInterface     $now
      */
-    public function __construct(string $time, LocaleInterface $locale, TimeZone $zone, TimeInterface $now = null)
-    {
+    public function __construct(
+        string $time,
+        LocaleInterface $locale,
+        TimeZoneInterface $zone,
+        TimeInterface $now = null
+    ) {
         $this->locale = $locale;
         $this->now = $now;
         $this->timeZone = $zone;
@@ -53,9 +57,9 @@ class Time extends \DateTimeImmutable implements TimeInterface
     }
 
     /**
-     * @return TimeZone
+     * @return TimeZoneInterface
      */
-    public function getTimezone(): TimeZone
+    public function getTimezone(): TimeZoneInterface
     {
         return $this->timeZone;
     }
@@ -263,7 +267,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
     /**
      * @inheritDoc
      */
-    public function setTimezone($timezone)
+    public function setTimezone(\DateTimeZone $timezone)
     {
         if (false === ($timezone instanceof TimeZone)) {
             throw new UnsupportedTimeZoneException($this, $timezone);
@@ -893,14 +897,14 @@ class Time extends \DateTimeImmutable implements TimeInterface
             return $dateTime->diffInDays($this);
         }
         $diff = 0;
-        for ($i = $this->getDayOfWeek(); $i < $this->locale->getWeekEndsAt(); $i++) {
-            if (in_array($i, $this->locale->getWeekendDays())) {
+        for ($counter = $this->getDayOfWeek(); $counter < $this->locale->getWeekEndsAt(); $counter++) {
+            if (in_array($counter, $this->locale->getWeekendDays())) {
                 continue;
             }
             $diff++;
         }
-        for ($i = $this->locale->getWeekStartsAt(); $i < $dateTime->getDayOfWeek(); $i++) {
-            if (in_array($i, $this->locale->getWeekendDays())) {
+        for ($counter = $this->locale->getWeekStartsAt(); $counter < $dateTime->getDayOfWeek(); $counter++) {
+            if (in_array($counter, $this->locale->getWeekendDays())) {
                 continue;
             }
             $diff++;
@@ -919,14 +923,14 @@ class Time extends \DateTimeImmutable implements TimeInterface
             return $dateTime->diffInDays($this);
         }
         $diff = 0;
-        for ($i = $this->getDayOfWeek(); $i < $this->locale->getWeekEndsAt(); $i++) {
-            if (false === in_array($i, $this->locale->getWeekendDays())) {
+        for ($counter = $this->getDayOfWeek(); $counter < $this->locale->getWeekEndsAt(); $counter++) {
+            if (false === in_array($counter, $this->locale->getWeekendDays())) {
                 continue;
             }
             $diff++;
         }
-        for ($i = $this->locale->getWeekStartsAt(); $i < $dateTime->getDayOfWeek(); $i++) {
-            if (false === in_array($i, $this->locale->getWeekendDays())) {
+        for ($counter = $this->locale->getWeekStartsAt(); $counter < $dateTime->getDayOfWeek(); $counter++) {
+            if (false === in_array($counter, $this->locale->getWeekendDays())) {
                 continue;
             }
             $diff++;
@@ -1088,7 +1092,9 @@ class Time extends \DateTimeImmutable implements TimeInterface
             return $this->setDay(1)->startOfDay();
         }
 
-        return $this->modify('first ' . self::DAYS[$dayOfWeek] . ' of ' . $this->format('F') . ' ' . $this->getYear());
+        return $this->modify(
+            'first ' . self::WEEKDAYS[$dayOfWeek] . ' of ' . $this->format('F') . ' ' . $this->getYear()
+        );
     }
 
     /**
@@ -1100,7 +1106,9 @@ class Time extends \DateTimeImmutable implements TimeInterface
             return $this->setDay($this->getDaysInMonth())->startOfDay();
         }
 
-        return $this->modify('last ' . self::DAYS[$dayOfWeek] . ' of ' . $this->format('F') . ' ' . $this->getYear());
+        return $this->modify(
+            'last ' . self::WEEKDAYS[$dayOfWeek] . ' of ' . $this->format('F') . ' ' . $this->getYear()
+        );
     }
 
     /**
@@ -1110,7 +1118,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
     {
         $dateTime = $this->firstOfMonth();
         $check = $dateTime->format('Y-m');
-        $dateTime = $dateTime->modify('+' . $nth . ' ' . self::DAYS[$dayOfWeek]);
+        $dateTime = $dateTime->modify('+' . $nth . ' ' . self::WEEKDAYS[$dayOfWeek]);
 
         return $dateTime->format('Y-m') === $check ? $dateTime : null;
     }
@@ -1136,7 +1144,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
      */
     public function nthOfYear(int $nth, int $dayOfWeek): TimeInterface
     {
-        $dateTime = $this->firstOfYear()->modify('+' . $nth . ' ' . self::DAYS[$dayOfWeek]);
+        $dateTime = $this->firstOfYear()->modify('+' . $nth . ' ' . self::WEEKDAYS[$dayOfWeek]);
 
         return $this->getYear() === $dateTime->getYear() ? $dateTime : null;
     }

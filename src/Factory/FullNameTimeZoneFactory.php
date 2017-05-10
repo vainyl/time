@@ -1,25 +1,27 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
- * @package   vain-time
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-time
+ * @link      https://vainyl.com
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Vainyl\Time\Factory;
 
+use Vainyl\Core\AbstractIdentifiable;
 use Vainyl\Time\TimeZone;
+use Vainyl\Time\TimeZoneInterface;
 
 /**
- * Class TimeZoneFullNameFactory
+ * Class FullNameTimeZoneFactory
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class TimeZoneFullNameFactory implements TimeZoneFactoryInterface
+class FullNameTimeZoneFactory extends AbstractIdentifiable implements TimeZoneFactoryInterface
 {
     private $timeZones;
 
@@ -36,11 +38,16 @@ class TimeZoneFullNameFactory implements TimeZoneFactoryInterface
     /**
      * @inheritDoc
      */
-    public function getTimeZone(string $fullName, \DateTimeInterface $dateTime) : TimeZone
+    public function getName(): string
     {
-        if ('' === $fullName) {
-            $fullName = 'UTC';
-        }
+        return 'full';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getTimeZone(string $fullName, \DateTimeInterface $dateTime): ?TimeZoneInterface
+    {
         if (false === array_key_exists($fullName, $this->timeZones)) {
             $synonym = $fullName;
         } else {

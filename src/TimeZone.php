@@ -1,14 +1,14 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
- * @package   vain-time
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-time
+ * @link      https://vainyl.com
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Vainyl\Time;
 
@@ -48,7 +48,7 @@ class TimeZone extends \DateTimeZone implements TimeZoneInterface
     /**
      * @return string
      */
-    public function getSynonym() : string
+    public function getSynonym(): string
     {
         return $this->synonym;
     }
@@ -56,7 +56,7 @@ class TimeZone extends \DateTimeZone implements TimeZoneInterface
     /**
      * @return string
      */
-    public function getAbbreviation() : string
+    public function getAbbreviation(): string
     {
         return $this->abbreviation;
     }

@@ -4,7 +4,7 @@
  *
  * PHP Version 7
  *
- * @package   Time
+ * @package   time
  * @license   https://opensource.org/licenses/MIT MIT License
  * @link      https://vainyl.com
  */
@@ -12,17 +12,17 @@ declare(strict_types=1);
 
 namespace Vainyl\Time\Exception;
 
-use Vainyl\Time\TimeInterface;
+use Vainyl\Time\Factory\TimeZoneFactoryInterface;
 
 /**
- * Class TimeExceptionInterface
+ * Interface TimeZoneFactoryExceptionInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface TimeExceptionInterface extends \Throwable
+interface TimeZoneFactoryExceptionInterface extends \Throwable
 {
     /**
-     * @return TimeInterface
+     * @return TimeZoneFactoryInterface
      */
-    public function getTime(): TimeInterface;
+    public function getTimeZoneFactory(): TimeZoneFactoryInterface;
 }

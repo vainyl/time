@@ -1,18 +1,18 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
- * @package   vain-core
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-core
+ * @link      https://vainyl.com
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Vainyl\Time;
 
-use Vainyl\Core\ArrayX\ArrayInterface;
+use Vainyl\Core\ArrayInterface;
 use Vainyl\Locale\LocaleInterface;
 
 /**
@@ -29,7 +29,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
     const THURSDAY = 4;
     const FRIDAY = 5;
     const SATURDAY = 6;
-    const DAYS = [
+    const WEEKDAYS = [
         self::SUNDAY    => 'Sunday',
         self::MONDAY    => 'Monday',
         self::TUESDAY   => 'Tuesday',
@@ -50,42 +50,42 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return TimeInterface
      */
-    public function setYear(int $value) : TimeInterface;
+    public function setYear(int $value): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function setMonth(int $value) : TimeInterface;
+    public function setMonth(int $value): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function setDay(int $value) : TimeInterface;
+    public function setDay(int $value): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function setHours(int $value) : TimeInterface;
+    public function setHours(int $value): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function setMinutes(int $value) : TimeInterface;
+    public function setMinutes(int $value): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function setSeconds(int $value) : TimeInterface;
+    public function setSeconds(int $value): TimeInterface;
 
     /**
      * @param int $year
@@ -104,7 +104,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
         int $hour,
         int $minute,
         int $second = 0
-    ) : TimeInterface;
+    ): TimeInterface;
 
     /**
      * @param int $hour
@@ -129,203 +129,203 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return TimeInterface
      */
-    public function setTimeFromTimeString(string $time) : TimeInterface;
+    public function setTimeFromTimeString(string $time): TimeInterface;
 
     /**
-     * @param TimeZoneInterface $value
+     * @param \DateTimeZone $value
      *
      * @return TimeInterface
      */
-    public function setTimezone($value);
+    public function setTimezone(\DateTimeZone $value);
 
     /**
      * @return int
      */
-    public function getWeekOfMonth() : int;
+    public function getWeekOfMonth(): int;
 
     /**
      * @return int
      */
-    public function getYear() : int;
+    public function getYear(): int;
 
     /**
      * @return int
      */
-    public function getYearIso() : int;
+    public function getYearIso(): int;
 
     /**
      * @return int
      */
-    public function getMonth() : int;
+    public function getMonth(): int;
 
     /**
      * @return int
      */
-    public function getDay() : int;
+    public function getDay(): int;
 
     /**
      * @return int
      */
-    public function getHour() : int;
+    public function getHour(): int;
 
     /**
      * @return int
      */
-    public function getMinutes() : int;
+    public function getMinutes(): int;
 
     /**
      * @return int
      */
-    public function getSeconds() : int;
+    public function getSeconds(): int;
 
     /**
      * @return int
      */
-    public function getMicroseconds() : int;
+    public function getMicroseconds(): int;
 
     /**
      * @return int
      */
-    public function getDayOfWeek() : int;
+    public function getDayOfWeek(): int;
 
     /**
      * @return int
      */
-    public function getIsoDayOfWeek() : int;
+    public function getIsoDayOfWeek(): int;
 
     /**
      * @return int
      */
-    public function getDayOfYear() : int;
+    public function getDayOfYear(): int;
 
     /**
      * @return int
      */
-    public function getWeekOfYear() : int;
+    public function getWeekOfYear(): int;
 
     /**
      * @return int
      */
-    public function getDaysInMonth() : int;
+    public function getDaysInMonth(): int;
 
     /**
      * @return int
      */
-    public function getAge() : int;
+    public function getAge(): int;
 
     /**
      * @return int
      */
-    public function getQuarter() : int;
+    public function getQuarter(): int;
 
     /**
      * @return float
      */
-    public function getOffsetHours() : float;
+    public function getOffsetHours(): float;
 
     /**
      * @return bool
      */
-    public function getDst() : bool;
+    public function getDst(): bool;
 
     /**
      * @return string
      */
-    public function getTimezoneName() : string;
+    public function getTimezoneName(): string;
 
     /**
      * @param LocaleInterface $locale
      *
      * @return TimeInterface
      */
-    public function setLocale(LocaleInterface $locale) : TimeInterface;
+    public function setLocale(LocaleInterface $locale): TimeInterface;
 
     /**
      * @return LocaleInterface
      */
-    public function getLocale() : LocaleInterface;
+    public function getLocale(): LocaleInterface;
 
     /**
      * Format the instance as date
      *
      * @return string
      */
-    public function toDate() : string;
+    public function toDate(): string;
 
     /**
      * @return string
      */
-    public function toTime() : string;
+    public function toTime(): string;
 
     /**
      * @return string
      */
-    public function toDateTime() : string;
+    public function toDateTime(): string;
 
     /**
      * @return string
      */
-    public function toDayDateTime() : string;
+    public function toDayDateTime(): string;
 
     /**
      * @return string
      */
-    public function toAtom() : string;
+    public function toAtom(): string;
 
     /**
      * @return string
      */
-    public function toCookie() : string;
+    public function toCookie(): string;
 
     /**
      * @return string
      */
-    public function toIso8601() : string;
+    public function toIso8601(): string;
 
     /**
      * @return string
      */
-    public function toRfc822() : string;
+    public function toRfc822(): string;
 
     /**
      * @return string
      */
-    public function toRfc850() : string;
+    public function toRfc850(): string;
 
     /**
      * @return string
      */
-    public function toRfc1036() : string;
+    public function toRfc1036(): string;
 
     /**
      * @return string
      */
-    public function toRfc1123() : string;
+    public function toRfc1123(): string;
 
     /**
      * @return string
      */
-    public function toRfc2822() : string;
+    public function toRfc2822(): string;
 
     /**
      * @return string
      */
-    public function toRfc3339() : string;
+    public function toRfc3339(): string;
 
     /**
      * @return string
      */
-    public function toRss() : string;
+    public function toRss(): string;
 
     /**
      * @return string
      */
-    public function toW3c() : string;
+    public function toW3c(): string;
 
     /**
      * @return string
      */
-    public function toSystem() : string;
+    public function toSystem(): string;
 
     /**
      * @param TimeInterface $dt1
@@ -334,7 +334,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return bool
      */
-    public function between(TimeInterface $dt1, TimeInterface $dt2, bool $equal = true) : bool;
+    public function between(TimeInterface $dt1, TimeInterface $dt2, bool $equal = true): bool;
 
     /**
      * @param TimeInterface $dt1
@@ -342,7 +342,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return TimeInterface
      */
-    public function closest(TimeInterface $dt1, TimeInterface $dt2) : TimeInterface;
+    public function closest(TimeInterface $dt1, TimeInterface $dt2): TimeInterface;
 
     /**
      * @param TimeInterface $dt1
@@ -350,117 +350,117 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return TimeInterface
      */
-    public function farthest(TimeInterface $dt1, TimeInterface $dt2) : TimeInterface;
+    public function farthest(TimeInterface $dt1, TimeInterface $dt2): TimeInterface;
 
     /**
      * @return bool
      */
-    public function isWeekday() : bool;
+    public function isWeekday(): bool;
 
     /**
      * @return bool
      */
-    public function isWeekend() : bool;
+    public function isWeekend(): bool;
 
     /**
      * @return bool
      */
-    public function isYesterday() : bool;
+    public function isYesterday(): bool;
 
     /**
      * @return bool
      */
-    public function isToday() : bool;
+    public function isToday(): bool;
 
     /**
      * @return bool
      */
-    public function isTomorrow() : bool;
+    public function isTomorrow(): bool;
 
     /**
      * @return bool
      */
-    public function isFuture() : bool;
+    public function isFuture(): bool;
 
     /**
      * @return bool
      */
-    public function isPast() : bool;
+    public function isPast(): bool;
 
     /**
      * @return bool
      */
-    public function isLeapYear() : bool;
+    public function isLeapYear(): bool;
 
     /**
      * @param TimeInterface $dt
      *
      * @return bool
      */
-    public function isSameDay(TimeInterface $dt) : bool;
+    public function isSameDay(TimeInterface $dt): bool;
 
     /**
      * Checks if this day is a Sunday.
      *
      * @return bool
      */
-    public function isSunday() : bool;
+    public function isSunday(): bool;
 
     /**
      * Checks if this day is a Monday.
      *
      * @return bool
      */
-    public function isMonday() : bool;
+    public function isMonday(): bool;
 
     /**
      * Checks if this day is a Tuesday.
      *
      * @return bool
      */
-    public function isTuesday() : bool;
+    public function isTuesday(): bool;
 
     /**
      * Checks if this day is a Wednesday.
      *
      * @return bool
      */
-    public function isWednesday() : bool;
+    public function isWednesday(): bool;
 
     /**
      * Checks if this day is a Thursday.
      *
      * @return bool
      */
-    public function isThursday() : bool;
+    public function isThursday(): bool;
 
     /**
      * Checks if this day is a Friday.
      *
      * @return bool
      */
-    public function isFriday() : bool;
+    public function isFriday(): bool;
 
     /**
      * Checks if this day is a Saturday.
      *
      * @return bool
      */
-    public function isSaturday() : bool;
+    public function isSaturday(): bool;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function modifyYears(int $value) : TimeInterface;
+    public function modifyYears(int $value): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function addYears(int $value = 1) : TimeInterface;
+    public function addYears(int $value = 1): TimeInterface;
 
     /**
      * Remove a year from the instance
@@ -469,154 +469,154 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return TimeInterface
      */
-    public function subYears(int $value = 1) : TimeInterface;
+    public function subYears(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function modifyMonths(int $value = 1) : TimeInterface;
+    public function modifyMonths(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function addMonths(int $value = 1) : TimeInterface;
+    public function addMonths(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function subMonths(int $value = 1) : TimeInterface;
+    public function subMonths(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function modifyDays(int $value) : TimeInterface;
+    public function modifyDays(int $value): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function addDays(int $value = 1) : TimeInterface;
+    public function addDays(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function subDays(int $value = 1) : TimeInterface;
+    public function subDays(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function modifyWeekdays(int $value = 1) : TimeInterface;
+    public function modifyWeekdays(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function addWeekdays(int $value = 1) : TimeInterface;
+    public function addWeekdays(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function subWeekdays(int $value = 1) : TimeInterface;
+    public function subWeekdays(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function modifyWeeks(int $value = 1) : TimeInterface;
+    public function modifyWeeks(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function addWeeks(int $value = 1) : TimeInterface;
+    public function addWeeks(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function subWeeks(int $value = 1) : TimeInterface;
+    public function subWeeks(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function modifyHours(int $value = 1) : TimeInterface;
+    public function modifyHours(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function addHours(int $value = 1) : TimeInterface;
+    public function addHours(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function subHours(int $value = 1)  : TimeInterface;
+    public function subHours(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function modifyMinutes(int $value = 1) : TimeInterface;
+    public function modifyMinutes(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function addMinutes(int $value = 1) : TimeInterface;
+    public function addMinutes(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function subMinutes(int $value = 1) : TimeInterface;
+    public function subMinutes(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function modifySeconds(int $value = 1) : TimeInterface;
+    public function modifySeconds(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function addSeconds(int $value = 1) : TimeInterface;
+    public function addSeconds(int $value = 1): TimeInterface;
 
     /**
      * @param int $value
      *
      * @return TimeInterface
      */
-    public function subSeconds(int $value = 1) : TimeInterface;
+    public function subSeconds(int $value = 1): TimeInterface;
 
     /**
      * @param TimeInterface|null $dt
@@ -624,7 +624,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInYears(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInYears(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @param TimeInterface|null $dt
@@ -632,7 +632,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInMonths(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInMonths(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @param TimeInterface|null $dt
@@ -640,7 +640,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInWeeks(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInWeeks(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @param TimeInterface|null $dt
@@ -648,7 +648,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInDays(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInDays(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @param TimeInterface|null $dt
@@ -656,7 +656,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInWeekdays(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInWeekdays(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @param TimeInterface|null $dt
@@ -664,7 +664,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInWeekendDays(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInWeekendDays(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @param TimeInterface|null $dt
@@ -672,7 +672,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInHours(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInHours(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @param TimeInterface|null $dt
@@ -680,7 +680,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInMinutes(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInMinutes(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @param TimeInterface|null $dt
@@ -688,85 +688,85 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return int
      */
-    public function diffInSeconds(TimeInterface $dt = null, bool $abs = true) : int;
+    public function diffInSeconds(TimeInterface $dt = null, bool $abs = true): int;
 
     /**
      * @return int
      */
-    public function secondsSinceMidnight() : int;
+    public function secondsSinceMidnight(): int;
 
     /**
      * @return int
      */
-    public function secondsUntilEndOfDay() : int;
+    public function secondsUntilEndOfDay(): int;
 
     /**
      * @return TimeInterface
      */
-    public function startOfDay() : TimeInterface;
+    public function startOfDay(): TimeInterface;
 
     /**
      * @return TimeInterface
      */
-    public function endOfDay() : TimeInterface;
+    public function endOfDay(): TimeInterface;
 
     /**
      * @return TimeInterface
      */
-    public function startOfMonth() : TimeInterface;
+    public function startOfMonth(): TimeInterface;
 
     /**
      * @return TimeInterface
      */
-    public function endOfMonth() : TimeInterface;
+    public function endOfMonth(): TimeInterface;
 
     /**
      * @return TimeInterface
      */
-    public function startOfYear() : TimeInterface;
+    public function startOfYear(): TimeInterface;
 
     /**
      * @return TimeInterface
      */
-    public function endOfYear() : TimeInterface;
+    public function endOfYear(): TimeInterface;
 
     /**
      * @return TimeInterface
      */
-    public function startOfWeek() : TimeInterface;
+    public function startOfWeek(): TimeInterface;
 
     /**
      * @return TimeInterface
      */
-    public function endOfWeek() : TimeInterface;
+    public function endOfWeek(): TimeInterface;
 
     /**
      * @param int|null $dayOfWeek
      *
      * @return TimeInterface
      */
-    public function next(int $dayOfWeek = null) : TimeInterface;
+    public function next(int $dayOfWeek = null): TimeInterface;
 
     /**
      * @param int|null $dayOfWeek
      *
      * @return TimeInterface
      */
-    public function previous(int $dayOfWeek = null) : TimeInterface;
+    public function previous(int $dayOfWeek = null): TimeInterface;
 
     /**
      * @param int|null $dayOfWeek
      *
      * @return TimeInterface
      */
-    public function firstOfMonth(int $dayOfWeek = null) : TimeInterface;
+    public function firstOfMonth(int $dayOfWeek = null): TimeInterface;
 
     /**
      * @param int|null $dayOfWeek
      *
      * @return TimeInterface
      */
-    public function lastOfMonth(int $dayOfWeek = null) : TimeInterface;
+    public function lastOfMonth(int $dayOfWeek = null): TimeInterface;
 
     /**
      * @param int $nth
@@ -774,21 +774,21 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return TimeInterface
      */
-    public function nthOfMonth(int $nth, int $dayOfWeek) : TimeInterface;
+    public function nthOfMonth(int $nth, int $dayOfWeek): TimeInterface;
 
     /**
      * @param int|null $dayOfWeek
      *
      * @return TimeInterface
      */
-    public function firstOfYear(int $dayOfWeek = null) : TimeInterface;
+    public function firstOfYear(int $dayOfWeek = null): TimeInterface;
 
     /**
      * @param int|null $dayOfWeek
      *
      * @return TimeInterface
      */
-    public function lastOfYear(int $dayOfWeek = null) : TimeInterface;
+    public function lastOfYear(int $dayOfWeek = null): TimeInterface;
 
     /**
      * @param int $nth
@@ -796,21 +796,21 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return TimeInterface
      */
-    public function nthOfYear(int $nth, int $dayOfWeek) : TimeInterface;
+    public function nthOfYear(int $nth, int $dayOfWeek): TimeInterface;
 
     /**
      * @param TimeInterface|null $dt
      *
      * @return TimeInterface
      */
-    public function average(TimeInterface $dt = null) : TimeInterface;
+    public function average(TimeInterface $dt = null): TimeInterface;
 
     /**
      * @param TimeInterface|null $dt
      *
      * @return bool
      */
-    public function isBirthday(TimeInterface $dt = null) : bool;
+    public function isBirthday(TimeInterface $dt = null): bool;
 
     /**
      * @param string $string
@@ -844,7 +844,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
     /**
      * @return string
      */
-    public function getTimeZoneSpec() : string;
+    public function getTimeZoneSpec(): string;
 
     /**
      * @return void

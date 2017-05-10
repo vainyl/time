@@ -1,12 +1,12 @@
 <?php
 /**
- * Vain Framework
+ * Vainyl
  *
  * PHP Version 7
  *
- * @package   vain-time
+ * @package   Time
  * @license   https://opensource.org/licenses/MIT MIT License
- * @link      https://github.com/allflame/vain-time
+ * @link      https://vainyl.com
  */
 declare(strict_types=1);
 
@@ -35,18 +35,15 @@ class TimeFactory implements TimeFactoryInterface
      *
      * @param \ArrayAccess             $localeStorage
      * @param TimeZoneFactoryInterface $timeZoneFactory
-     * @param string                   $defaultTimeZone
      * @param string                   $defaultLocale
      */
     public function __construct(
         \ArrayAccess $localeStorage,
         TimeZoneFactoryInterface $timeZoneFactory,
-        string $defaultTimeZone,
         string $defaultLocale
     ) {
         $this->localeStorage = $localeStorage;
         $this->timeZoneFactory = $timeZoneFactory;
-        $this->defaultTimeZone = $defaultTimeZone;
         $this->defaultLocale = $defaultLocale;
     }
 
@@ -61,15 +58,11 @@ class TimeFactory implements TimeFactoryInterface
         $dateTime = new \DateTime($string);
         $targetLocale = ('' !== $locale) ? $locale : $this->defaultLocale;
         $locale = $this->localeStorage[$targetLocale];
-        $timeZone = ('' !== $timeZoneName)
-            ? $this->timeZoneFactory->getTimeZone($timeZoneName, $dateTime)
-            : $this->timeZoneFactory->getTimeZone($dateTime->getTimezone()->getName(), $dateTime);
+        $timeZone = $this->timeZoneFactory->getTimeZone($timeZoneName, $dateTime);
         $targetZone = $this->timeZoneFactory->getTimeZone($this->defaultTimeZone, $dateTime);
 
         return (new Time(
-            $string, $locale, $timeZone,
-            (new Time('now', $locale, $timeZone))
-                ->setTimezone($targetZone)
+            $string, $locale, $timeZone, (new Time('now', $locale, $timeZone))->setTimezone($targetZone)
         ))->setTimezone($targetZone);
     }
 }

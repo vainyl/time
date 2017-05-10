@@ -1,4 +1,4 @@
-service:
+services:
   timezone.factory.extract:
     class: Vainyl\Time\Factory\ExtractTimeZoneFactory
     tags:
@@ -9,6 +9,7 @@ service:
       - {name: timezone.factory, priority: 200}
   timezone.factory.default:
     class: Vainyl\Time\Factory\DefaultTimeZoneFactory
+    arguments: ['%time.zone%']
     tags:
       - {name: timezone.factory, priority: 300}
   timezone.factory.chain:
@@ -16,7 +17,7 @@ service:
   timezone.factory: '@timezone.factory.chain'
   time.factory:
     class: Vainyl\Time\Factory\TimeFactory
-    arguments: ['@timezone.factory']
+    arguments: ['@locale.storage', '@timezone.factory', '%locale%']
   time.provider:
     class: Vainyl\Time\Provider\TimeProvider
     arguments: ['@time.factory']

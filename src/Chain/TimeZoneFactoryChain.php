@@ -85,7 +85,7 @@ class TimeZoneFactoryChain extends AbstractIdentifiable implements TimeZoneFacto
         /**
          * @var TimeZoneFactoryInterface $factory
          */
-        foreach (clone $this->factories as $factory) {
+        foreach (($copy = clone $this->factories) as $factory) {
             if (null === ($timeZone = $factory->getTimeZone($fullName, $dateTime))) {
                 continue;
             }

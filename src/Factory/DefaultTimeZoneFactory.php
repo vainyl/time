@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Vainyl\Time\Factory;
 
+use Vainyl\Core\AbstractIdentifiable;
 use Vainyl\Time\TimeZone;
 use Vainyl\Time\TimeZoneInterface;
 
@@ -20,7 +21,7 @@ use Vainyl\Time\TimeZoneInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class DefaultTimeZoneFactory implements TimeZoneFactoryInterface
+class DefaultTimeZoneFactory extends AbstractIdentifiable implements TimeZoneFactoryInterface
 {
     private $default;
 
@@ -32,6 +33,14 @@ class DefaultTimeZoneFactory implements TimeZoneFactoryInterface
     public function __construct(string $default)
     {
         $this->default = $default;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getName(): string
+    {
+        return 'default';
     }
 
     /**

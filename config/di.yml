@@ -17,7 +17,7 @@ services:
   timezone.factory: '@timezone.factory.chain'
   time.factory:
     class: Vainyl\Time\Factory\TimeFactory
-    arguments: ['@locale.storage', '@timezone.factory', '%locale%']
+    arguments: ['@locale.storage', '@timezone.factory', '%locale%', '%time.zone%]
   time.provider:
     class: Vainyl\Time\Provider\TimeProvider
     arguments: ['@time.factory']

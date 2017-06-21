@@ -26,8 +26,6 @@ class TimeFactory implements TimeFactoryInterface
 
     private $timeZoneFactory;
 
-    private $defaultTimeZone;
-
     /**
      * TimeFactory constructor.
      *
@@ -53,10 +51,10 @@ class TimeFactory implements TimeFactoryInterface
         $dateTime = new \DateTime($string);
         $locale = $this->localeStorage[$locale];
         $timeZone = $this->timeZoneFactory->getTimeZone($timeZoneName, $dateTime);
-        $targetZone = $this->timeZoneFactory->getTimeZone($this->defaultTimeZone, $dateTime);
 
-        return (new Time(
-            $string, $locale, $timeZone, (new Time('now', $locale, $timeZone))->setTimezone($targetZone)
-        ))->setTimezone($targetZone);
+        return new Time(
+            $string, $locale, $timeZone,
+            new Time('now', $locale, $timeZone)
+        );
     }
 }

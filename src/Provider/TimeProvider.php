@@ -37,7 +37,7 @@ class TimeProvider implements TimeProviderInterface
     /**
      * @inheritDoc
      */
-    public function getCurrentTime(string $timeZone): TimeInterface
+    public function getCurrentTime(string $timeZone = ''): TimeInterface
     {
         return $this->timeFactory->createFromString('now', $timeZone);
     }

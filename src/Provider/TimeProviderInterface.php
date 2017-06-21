@@ -26,5 +26,5 @@ interface TimeProviderInterface
      *
      * @return TimeInterface
      */
-    public function getCurrentTime(string $timeZone): TimeInterface;
+    public function getCurrentTime(string $timeZone = ''): TimeInterface;
 }

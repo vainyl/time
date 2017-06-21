@@ -41,8 +41,8 @@ class TimeExtension extends AbstractFrameworkExtension
         $configuration = new TimeConfiguration();
         $timeConfiguration = $this->processConfiguration($configuration, $configs);
 
-        $definition = $container->getDefinition('time.factory');
-        $definition->replaceArgument(2, $timeConfiguration['timezone']);
+        $definition = $container->getDefinition('timezone.factory.default');
+        $definition->replaceArgument(0, $timeConfiguration['timezone']);
 
         return $this;
     }

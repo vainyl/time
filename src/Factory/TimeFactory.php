@@ -33,16 +33,13 @@ class TimeFactory implements TimeFactoryInterface
      *
      * @param \ArrayAccess             $localeStorage
      * @param TimeZoneFactoryInterface $timeZoneFactory
-     * @param string                   $defaultTimeZone
      */
     public function __construct(
         \ArrayAccess $localeStorage,
-        TimeZoneFactoryInterface $timeZoneFactory,
-        string $defaultTimeZone
+        TimeZoneFactoryInterface $timeZoneFactory
     ) {
         $this->localeStorage = $localeStorage;
         $this->timeZoneFactory = $timeZoneFactory;
-        $this->defaultTimeZone = $defaultTimeZone;
     }
 
     /**
@@ -50,7 +47,7 @@ class TimeFactory implements TimeFactoryInterface
      */
     public function createFromString(
         string $string,
-        string $timeZoneName = '',
+        string $timeZoneName = 'default',
         string $locale = 'default'
     ): TimeInterface {
         $dateTime = new \DateTime($string);

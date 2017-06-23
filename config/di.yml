@@ -9,7 +9,7 @@ services:
       - {name: timezone.factory, priority: 200}
   timezone.factory.default:
     class: Vainyl\Time\Factory\DefaultTimeZoneFactory
-    arguments: ['%time.zone%']
+    arguments: ['UTC']
     tags:
       - {name: timezone.factory, priority: 300}
   timezone.factory.chain:
@@ -17,7 +17,7 @@ services:
   timezone.factory: '@timezone.factory.chain'
   time.factory:
     class: Vainyl\Time\Factory\TimeFactory
-    arguments: ['@locale.storage', '@timezone.factory', '%locale%']
+    arguments: ['@locale.storage', '@timezone.factory']
   time.provider:
     class: Vainyl\Time\Provider\TimeProvider
     arguments: ['@time.factory']

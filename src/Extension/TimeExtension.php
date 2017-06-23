@@ -13,23 +13,37 @@ declare(strict_types=1);
 namespace Vainyl\Time\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Vainyl\Core\Application\EnvironmentInterface;
 use Vainyl\Core\Extension\AbstractExtension;
+use Vainyl\Core\Extension\AbstractFrameworkExtension;
 
 /**
  * Class TimeExtension
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class TimeExtension extends AbstractExtension
+class TimeExtension extends AbstractFrameworkExtension
 {
     /**
      * @inheritDoc
      */
-    public function load(array $configs, ContainerBuilder $container, EnvironmentInterface $environment = null): AbstractExtension
+    public function getCompilerPasses(): array
     {
-        $container->addCompilerPass(new TimeZoneFactoryCompilerPass());
+        return [new TimeZoneFactoryCompilerPass()];
+    }
 
-        return parent::load($configs, $container, $environment);
+    /**
+     * @inheritDoc
+     */
+    public function load(array $configs, ContainerBuilder $container): AbstractExtension
+    {
+        parent::load($configs, $container);
+
+        $configuration = new TimeConfiguration();
+        $timeConfiguration = $this->processConfiguration($configuration, $configs);
+
+        $definition = $container->getDefinition('timezone.factory.default');
+        $definition->replaceArgument(0, $timeConfiguration['timezone']);
+
+        return $this;
     }
 }

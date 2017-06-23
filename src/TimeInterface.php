@@ -136,7 +136,7 @@ interface TimeInterface extends ArrayInterface, \DateTimeInterface
      *
      * @return TimeInterface
      */
-    public function setTimezone(\DateTimeZone $value);
+    public function setTimezone($value);
 
     /**
      * @return int

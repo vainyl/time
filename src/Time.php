@@ -694,7 +694,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
      */
     public function addMonths(int $value = 1): TimeInterface
     {
-        return $this->addMonths($value);
+        return $this->modifyMonths($value);
     }
 
     /**
@@ -726,7 +726,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
      */
     public function subDays(int $value = 1): TimeInterface
     {
-        return $this->addDays(-1 * $value);
+        return $this->modifyDays(-1 * $value);
     }
 
     /**
@@ -774,7 +774,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
      */
     public function subWeeks(int $value = 1): TimeInterface
     {
-        return $this->addWeeks(-1 * $value);
+        return $this->modifyWeeks(-1 * $value);
     }
 
     /**

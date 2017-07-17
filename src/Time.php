@@ -1172,11 +1172,19 @@ class Time extends \DateTimeImmutable implements TimeInterface
     /**
      * @inheritDoc
      */
+    public function jsonSerialize()
+    {
+        return $this->toArray();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function toArray(): array
     {
         return [
             'time'      => $this->toW3c(),
-            'time_zone' => $this->timeZone->toArray(),
+            'timeZone' => $this->timeZone->toArray(),
             'locale'    => $this->locale->toArray(),
         ];
     }

@@ -694,7 +694,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
      */
     public function addMonths(int $value = 1): TimeInterface
     {
-        return $this->addMonths($value);
+        return $this->modifyMonths($value);
     }
 
     /**
@@ -726,7 +726,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
      */
     public function subDays(int $value = 1): TimeInterface
     {
-        return $this->addDays(-1 * $value);
+        return $this->modifyDays(-1 * $value);
     }
 
     /**
@@ -774,7 +774,7 @@ class Time extends \DateTimeImmutable implements TimeInterface
      */
     public function subWeeks(int $value = 1): TimeInterface
     {
-        return $this->addWeeks(-1 * $value);
+        return $this->modifyWeeks(-1 * $value);
     }
 
     /**
@@ -1172,11 +1172,19 @@ class Time extends \DateTimeImmutable implements TimeInterface
     /**
      * @inheritDoc
      */
+    public function jsonSerialize()
+    {
+        return $this->toArray();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function toArray(): array
     {
         return [
             'time'      => $this->toW3c(),
-            'time_zone' => $this->timeZone->toArray(),
+            'timeZone' => $this->timeZone->toArray(),
             'locale'    => $this->locale->toArray(),
         ];
     }

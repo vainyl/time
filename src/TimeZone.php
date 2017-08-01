@@ -64,6 +64,14 @@ class TimeZone extends \DateTimeZone implements TimeZoneInterface
     /**
      * @inheritDoc
      */
+    public function jsonSerialize()
+    {
+        return $this->toArray();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function toArray(): array
     {
         return ['synonym' => $this->synonym, 'abbreviation' => $this->abbreviation];

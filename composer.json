@@ -13,9 +13,10 @@
         }
     },
     "require": {
-        "vainyl/core": "dev-master",
-        "vainyl/locale": "dev-master",
-        "vainyl/data": "dev-master"
+        "php": ">=7.1",
+        "vainyl/core": "0.1.x-dev",
+        "vainyl/locale": "0.1.x-dev",
+        "vainyl/data": "0.1.x-dev"
     },
     "repositories": [
         {

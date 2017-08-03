@@ -38,6 +38,24 @@ class TimeZone extends \DateTimeZone implements TimeZoneInterface
     }
 
     /**
+     * @param TimeZone $obj
+     *
+     * @return bool
+     */
+    public function equals($obj): bool
+    {
+        return $this->getId() === $obj->getId();
+    }
+
+    /**
+     * @return string
+     */
+    public function getAbbreviation(): string
+    {
+        return $this->abbreviation;
+    }
+
+    /**
      * @inheritDoc
      */
     public function getId(): string
@@ -54,11 +72,11 @@ class TimeZone extends \DateTimeZone implements TimeZoneInterface
     }
 
     /**
-     * @return string
+     * @inheritDoc
      */
-    public function getAbbreviation(): string
+    public function hash()
     {
-        return $this->abbreviation;
+        return $this->getId();
     }
 
     /**

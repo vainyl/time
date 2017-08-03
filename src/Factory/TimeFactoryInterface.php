@@ -28,5 +28,9 @@ interface TimeFactoryInterface
      *
      * @return \Vainyl\Time\TimeInterface
      */
-    public function createFromString(string $string, string $timeZoneName = 'default', string $locale = 'default'): TimeInterface;
+    public function createFromString(
+        string $string,
+        string $timeZoneName = 'default',
+        string $locale = 'default'
+    ): TimeInterface;
 }

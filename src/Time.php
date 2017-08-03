@@ -1183,9 +1183,9 @@ class Time extends \DateTimeImmutable implements TimeInterface
     public function toArray(): array
     {
         return [
-            'time'      => $this->toW3c(),
+            'time'     => $this->toW3c(),
             'timeZone' => $this->timeZone->toArray(),
-            'locale'    => $this->locale->toArray(),
+            'locale'   => $this->locale->toArray(),
         ];
     }
 

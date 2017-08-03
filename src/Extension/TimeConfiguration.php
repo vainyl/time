@@ -32,9 +32,8 @@ class TimeConfiguration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('timezone')->defaultValue('UTC')->end()
-            ->end()
-        ;
+            ->scalarNode('timezone')->defaultValue('UTC')->end()
+            ->end();
 
         return $treeBuilder;
     }

@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace Vainyl\Time\Chain;
 
-use Ds\PriorityQueue;
-use Ds\Vector;
 use Vainyl\Core\AbstractIdentifiable;
+use Vainyl\Core\Collection\VectorInterface;
+use Vainyl\Core\Queue\PriorityQueueInterface;
 use Vainyl\Time\Exception\UnknownTimeZoneException;
 use Vainyl\Time\Factory\TimeZoneFactoryInterface;
 use Vainyl\Time\TimeZoneInterface;
@@ -26,17 +26,20 @@ use Vainyl\Time\TimeZoneInterface;
  */
 class TimeZoneFactoryChain extends AbstractIdentifiable implements TimeZoneFactoryInterface
 {
-    private $factories;
-
     private $queue;
 
+    private $factories;
+
     /**
-     * ConfigSourceChain constructor.
+     * TimeZoneFactoryChain constructor.
+     *
+     * @param PriorityQueueInterface $queue
+     * @param VectorInterface        $vector
      */
-    public function __construct()
+    public function __construct(PriorityQueueInterface $queue, VectorInterface $vector)
     {
-        $this->factories = new Vector();
-        $this->queue = new PriorityQueue();
+        $this->queue = $queue;
+        $this->factories = $vector;
     }
 
     /**
@@ -55,7 +58,7 @@ class TimeZoneFactoryChain extends AbstractIdentifiable implements TimeZoneFacto
      */
     public function addFactory(int $priority, TimeZoneFactoryInterface $timeZoneFactory): TimeZoneFactoryChain
     {
-        $this->queue->push($timeZoneFactory, $priority);
+        $this->queue->enqueue($timeZoneFactory, $priority);
 
         return $this->configure();
     }
@@ -66,13 +69,11 @@ class TimeZoneFactoryChain extends AbstractIdentifiable implements TimeZoneFacto
     public function configure(): TimeZoneFactoryChain
     {
         $queue = clone $this->queue;
-        $list = new Vector();
+        $this->factories->clear();
 
-        while (false === $queue->isEmpty()) {
-            $list->push($queue->pop());
+        while (false === $queue->valid()) {
+            $this->factories->push($queue->dequeue());
         }
-
-        $this->factories = $list;
 
         return $this;
     }
@@ -85,7 +86,7 @@ class TimeZoneFactoryChain extends AbstractIdentifiable implements TimeZoneFacto
         /**
          * @var TimeZoneFactoryInterface $factory
          */
-        foreach (($copy = clone $this->factories) as $factory) {
+        foreach ($this->factories as $factory) {
             if (null === ($timeZone = $factory->getTimeZone($fullName, $dateTime))) {
                 continue;
             }

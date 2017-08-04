@@ -14,6 +14,7 @@ services:
       - {name: timezone.factory, priority: 300}
   timezone.factory.chain:
     class: Vainyl\Time\Chain\TimeZoneFactoryChain
+    arguments: ['@priority.queue.prototype', '@vector.prototype']
   timezone.factory: '@timezone.factory.chain'
   time.factory:
     class: Vainyl\Time\Factory\TimeFactory

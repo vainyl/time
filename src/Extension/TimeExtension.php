@@ -28,7 +28,7 @@ class TimeExtension extends AbstractFrameworkExtension
      */
     public function getCompilerPasses(): array
     {
-        return [new TimeZoneFactoryCompilerPass()];
+        return [[new TimeZoneFactoryCompilerPass()]];
     }
 
     /**

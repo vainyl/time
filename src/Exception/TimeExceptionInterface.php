@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Vainyl\Time\Exception;
 
+use Vainyl\Core\Exception\CoreExceptionInterface;
 use Vainyl\Time\TimeInterface;
 
 /**
@@ -19,7 +20,7 @@ use Vainyl\Time\TimeInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface TimeExceptionInterface extends \Throwable
+interface TimeExceptionInterface extends CoreExceptionInterface
 {
     /**
      * @return TimeInterface

@@ -31,13 +31,13 @@ abstract class AbstractTimeZoneFactoryException extends AbstractCoreException im
      * @param TimeZoneFactoryInterface $timeZoneFactory
      * @param string                   $message
      * @param int                      $code
-     * @param \Exception|null          $previous
+     * @param \Throwable|null          $previous
      */
     public function __construct(
         TimeZoneFactoryInterface $timeZoneFactory,
         string $message,
         int $code = 500,
-        \Exception $previous = null
+        \Throwable $previous = null
     ) {
         $this->timeZoneFactory = $timeZoneFactory;
         parent::__construct($message, $code, $previous);

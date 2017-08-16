@@ -30,9 +30,9 @@ abstract class AbstractTimeException extends AbstractCoreException implements Ti
      * @param TimeInterface   $time
      * @param string          $message
      * @param int             $code
-     * @param \Exception|null $previous
+     * @param \Throwable|null $previous
      */
-    public function __construct(TimeInterface $time, string $message, int $code = 500, \Exception $previous = null)
+    public function __construct(TimeInterface $time, string $message, int $code = 500, \Throwable $previous = null)
     {
         $this->time = $time;
         parent::__construct($message, $code, $previous);

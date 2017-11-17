@@ -33,7 +33,7 @@ class UnknownTimeZoneException extends AbstractTimeZoneFactoryException
     {
         parent::__construct(
             $timeZoneFactory,
-            sprintf('Factory %s does not know how to construct time zone %s', $timeZone)
+            sprintf('Factory %s does not know how to construct time zone %s', $timeZoneFactory->getName(), $timeZone)
         );
     }
 

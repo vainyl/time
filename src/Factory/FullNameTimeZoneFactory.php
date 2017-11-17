@@ -55,6 +55,10 @@ class FullNameTimeZoneFactory extends AbstractIdentifiable implements TimeZoneFa
         }
         $clone = clone $dateTime;
 
-        return new TimeZone($fullName, $synonym, $clone->setTimezone(new \DateTimeZone($fullName))->format('T'));
+        try {
+            return new TimeZone($fullName, $synonym, $clone->setTimezone(new \DateTimeZone($fullName))->format('T'));
+        } catch (\Exception $badTimeZone) {
+            return null;
+        }
     }
 }
